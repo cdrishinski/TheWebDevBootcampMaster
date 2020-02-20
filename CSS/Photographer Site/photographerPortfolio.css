@@ -1,0 +1,22 @@
+h1 {
+  font-family: "pacifico", cursive;
+  margin-left: 1.66%;
+  font-size: 23px;
+  position: fixed;
+  margin-top: 0;
+  border-bottom: 3px solid #f1f1f1;
+  width: 30%;
+  top: 0;
+  padding-bottom: 20px;
+}
+
+#photos {
+  margin-top: 45px;
+}
+
+img {  
+  top:;
+  width: 30%;
+  float: left;
+  margin: 1.66%;
+}
