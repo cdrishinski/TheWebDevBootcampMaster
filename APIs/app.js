@@ -1,18 +1,17 @@
 const request = require('request');
-request('http://www.google.com', function (error, response, body) {
-  console.error('error:', error); // Print the error if one occurred
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
+const axios = require('axios');
+
+console.log('my api call get me...')
+// axios.get()
+
+
+request('https://jsonplaceholder.typicode.com/users/', function (error, response, body) {
+   // eval(require('locus'))
+    if(!error && response.statusCode == 200) {
+        const parsedData = JSON.parse(body)
+        console.log(parsedData[0].name, parsedData[1].name, parsedData[2].name)
+
+    }
+
 });
 
-request('http://www.redditdfdf.com', (err, res, body) =>{
-    if(err){
-        console.log('something went wrong!')
-        console.log(err)
-    } else {
-        if(res.statusCode == 200){
-            //everything worked
-            console.log(body)
-        }
-    }
-})
