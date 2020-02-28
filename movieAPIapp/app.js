@@ -11,9 +11,23 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
+
+
 //results route
-app.get('/', (req, res)=>{
-    res.render('home')
+app.get('/results', (req, res)=>{
+    axios({
+        method: 'get',
+        url: 'http://www.omdbapi.com/?s=guardians+of+the+galaxy&apikey=thewdb',
+        responseType: 'json'
+      })
+        .then((body) => {
+            const response = body.data.Search
+    
+          console.log(response)
+          res.send(response)
+    
+        });
+
 })
 
 //search route
