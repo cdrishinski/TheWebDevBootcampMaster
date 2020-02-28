@@ -1,0 +1,9 @@
+<h1>Home page</h1>
+
+<ul>
+    <% response.forEach((movie) =>{ %>
+        <li><strong><%= movie.Title %></strong> - <em><%= movie.Year %></em></li>
+    <% }) %>
+</ul>
+
+<a href="/">click for Home</a>

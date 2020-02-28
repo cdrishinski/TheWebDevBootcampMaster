@@ -11,26 +11,29 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-
+//search route
+app.get('/', (req, res) =>{
+    res.render('search')
+})
 
 //results route
 app.get('/results', (req, res)=>{
+    //console.log(req.query.search)
+    const query = req.query.search
+    const api = `http://www.omdbapi.com/?s=${query}&apikey=thewdb`
     axios({
         method: 'get',
-        url: 'http://www.omdbapi.com/?s=guardians+of+the+galaxy&apikey=thewdb',
+        url: api,
         responseType: 'json'
       })
         .then((body) => {
             const response = body.data.Search
-    
-          console.log(response)
-          res.send(response)
-    
+            //console.log(response)
+            res.render('results', {response: response})
         });
 
 })
 
-//search route
 
 
 const port = process.env.PORT || 3000;
