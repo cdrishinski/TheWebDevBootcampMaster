@@ -20,7 +20,8 @@ app.set('view engine', 'ejs')
 
 const campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 const Campground = mongoose.model('Campground', campgroundSchema);
@@ -28,7 +29,8 @@ const Campground = mongoose.model('Campground', campgroundSchema);
 // Campground.create(
 //     {
 //         name: 'soldier hollow',
-//         image: 'https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+//         image: 'https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+//         description: 'Beautiful lake side camping'
 //     }, (err, campground) => {
 //         if (err) {
 //             console.log('somethings wrong', err)
@@ -74,6 +76,11 @@ app.post('/campgrounds', (req, res) => {
 })
 app.get('/campgrounds/new', (req, res) => {
     res.render('newCampground')
+})
+
+//SHOW ROUTE
+app.get('/campgrounds/:id', (req, res)=>{
+    res.render('show')
 })
 
 const port = process.env.PORT || 3000;
