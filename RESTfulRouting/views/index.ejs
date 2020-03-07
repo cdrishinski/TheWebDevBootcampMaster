@@ -1,0 +1,17 @@
+<%- include("partials/header") %>
+
+<h2>index route showing now</h2>
+    
+    <% blogs.forEach((blog) =>{ %>
+        <h2><%= blog.title %></h2>
+        <div class="ui segment">
+            <img class="ui centered medium image" src="<%= blog.image %>" alt="blog image">
+        </div>
+        <p> <%= blog.body %></p>
+        <p> <%= blog.created %></p>
+        
+    <% }) %>
+
+
+
+<%- include("partials/footer") %>

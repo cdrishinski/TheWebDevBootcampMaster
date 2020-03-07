@@ -49,8 +49,8 @@ app.get('/campgrounds', (req, res) => {
         if (err) {
             console.log('we have an error', err)
         } else {
-            console.log('success loading campgrounds GET    !!!')
-            res.render('campgrounds', { campgrounds: allCampgrounds })
+            console.log('success loading campgrounds GET!!!')
+            res.render('index', { campgrounds: allCampgrounds })
         }
     })
 
@@ -59,8 +59,9 @@ app.post('/campgrounds', (req, res) => {
 
     let newCampgroundName = req.body.newCampground;
     let newCampgroundImage = req.body.imageURL;
+    let newCampgroundDescription = req.body.description;
 
-    let newCampground = {name: newCampgroundName, image: newCampgroundImage}
+    let newCampground = {name: newCampgroundName, image: newCampgroundImage, description: newCampgroundDescription}
 
     console.log(newCampground)
 
@@ -75,12 +76,19 @@ app.post('/campgrounds', (req, res) => {
     })
 })
 app.get('/campgrounds/new', (req, res) => {
-    res.render('newCampground')
+    res.render('new')
 })
 
 //SHOW ROUTE
 app.get('/campgrounds/:id', (req, res)=>{
-    res.render('show')
+    Campground.findById(req.params.id, (err,foundCampground)=>{
+        if(err){
+            console.log(err)
+        } else{
+            res.render('show', {campground: foundCampground})
+
+        }
+    })
 })
 
 const port = process.env.PORT || 3000;
