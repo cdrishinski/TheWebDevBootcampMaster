@@ -50,20 +50,24 @@ app.get('/blogs/new', (req, res)=>{
 
 //CREATE ROUTE
 app.post('/blogs', (req,res)=>{
-    const blogTitle = req.body.title,
-          blogImage = req.body.image,
-          blogBody = req.body.body;
-
-    const newBlog = {title: blogTitle, image: blogImage, body: blogBody};
     
-    Blog.create(newBlog, (err, blog)=>{
+    Blog.create(req.body.blog, (err, blog)=>{
         if(err){
             console.log(`there was an error!: `, err)
+            res.render('new')
         } else {
             res.redirect('/blogs')
         }
     })
 
+})
+
+//SHOW ROUTE
+app.get('/blogs/:id', (req, res)=>{
+    Blog.findById(req.params.id, (err, blog) =>{
+        
+    })
+    res.send('hey yall this is show page')
 })
 
 

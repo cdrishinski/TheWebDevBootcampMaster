@@ -5,20 +5,20 @@
     <form class="ui form" action="/blogs" method="POST">
         <div class="field">
             <label>Title</label>
-            <input type="text" name="title" placeholder="Title goes here...">
+            <input type="text" name="blog[title]" placeholder="Title goes here...">
         </div>
         <div class="field">
             <label>Image URL</label>
-            <input type="text" name="image" placeholder="Image URL goes here...">
+            <input type="text" name="blog[image]" placeholder="Image URL goes here...">
         </div>
         <div class="field">
             <label>Blog body</label>
-            <textarea placeholder="Blog message goes here..." name="body"></textarea>
+            <textarea placeholder="Blog message goes here..." name="blog[body]" required></textarea>
         </div>
 
-        <button class="ui button" type="submit">Submit</button>
+        <button class="ui inverted primary button big" type="submit">Submit</button>
         <a href="/blogs">
-            <button class="ui button" type="submit">Back</button>
+            <button class="ui inverted secondary button big" type="submit">Back</button>
         </a>
     </form>
 </div>
