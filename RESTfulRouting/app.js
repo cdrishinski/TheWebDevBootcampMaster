@@ -1,7 +1,8 @@
 const express = require('express'),
       app = express(),
       bodyParser = require('body-parser'),
-      mongoose = require('mongoose');
+      mongoose = require('mongoose'),
+      methodOverride = require('method-override');
 
 
 mongoose.set('useNewUrlParser', true);
@@ -11,6 +12,7 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.connect('mongodb://localhost/restful_blog_app');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.set('view engine', 'ejs')
 
 //CREATE BLOG SCHEMA
@@ -64,13 +66,50 @@ app.post('/blogs', (req,res)=>{
 
 //SHOW ROUTE
 app.get('/blogs/:id', (req, res)=>{
-    Blog.findById(req.params.id, (err, blog) =>{
-        
+
+    Blog.findById(req.params.id, (err, foundBlog) =>{
+        if(err){
+            res.redirect('/blogs')
+        } else {
+            res.render('show', {blog: foundBlog})
+        }
     })
-    res.send('hey yall this is show page')
 })
 
+//EDIT ROUTE
+app.get('/blogs/:id/edit', (req, res)=>{
+    Blog.findById(req.params.id, (err, foundBlog)=>{
+        if(err){
+            res.redirect('/blogs')
+        } else {
+            res.render('edit', {blog: foundBlog})
 
+        }
+    })
+})
+
+//UPDATE ROUTE
+app.put('/blogs/:id', (req, res)=>{
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog)=>{
+        if(err){
+            res.redirect('/blogs')
+        }else {
+            res.redirect(`/blogs/${req.params.id}`)
+        }
+    })
+})
+
+//DELETE ROUTE
+app.delete('/blogs/:id', (req,res)=>{
+    Blog.findByIdAndRemove(req.params.id, (err)=>{
+        if(err){
+            console.log(err);
+            res.redirect('/blogs')
+        }else {
+            res.redirect('/blogs')
+        }
+    })
+})
 
 const port = process.env.PORT || 3000;
 
