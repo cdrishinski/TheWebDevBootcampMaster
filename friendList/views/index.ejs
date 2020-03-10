@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+
+
+<h1>This is the index route!!!</h1>
+
+<% friends.forEach((friend)=>{ %>
+    <li><%= friend.firstName %></li>
+    <li><%= friend.lastName %></li>
+    <% }) %>
+
+<%- include('partials/footer') %>
