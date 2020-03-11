@@ -58,7 +58,6 @@ app.get('/friends/new', (req, res)=>{
 
 //CREATE ROUTE
 app.post('/friends', (req, res) =>{
-    console.log(req.body.friend)
     Friend.create(req.body.friend, (err, createdFriend)=>{
         if(err){
             console.log(err)
@@ -101,6 +100,16 @@ app.put('/friends/:id', (req, res)=>{
     })
 })
 //DELTE ROUTE
+app.delete('/friends/:id', (req, res) =>{
+    Friend.findByIdAndRemove(req.params.id, (err)=>{
+        if(err){
+            console.log(err)
+        } else {
+            res.redirect('/friends')
+
+        }
+    })
+})
 
 
 const port = process.env.PORT || 3000;

@@ -8,10 +8,18 @@
     <div class="content">
         <a class="header"><%= friend.firstName %> "<%= friend.nickName %>" <%= friend.lastName %></a>
         <div class="meta">
-            <span class="date">Birthday: <%= friend.dob.toDateString() %></span>
+            <span class="date">Entered: <% if(null){ %>
+                no dob entered
+            <% }else{ %>
+                <%= friend.created.toDateString() %>
+            <% } %></span>
         </div>
         <div class="meta">
-            <span class="date">Entered: <%= friend.created.toDateString() %></span>
+            <span class="date">Entered: <% if(null){ %>
+                no dob entered
+            <% }else{ %>
+                <%= friend.created.toDateString() %>
+            <% } %></span>
         </div>
         <div class="meta">
             <a class="header">Best Friend Y/N: <% if(friend.bestFriend == true){ %>
@@ -24,7 +32,9 @@
     </div>
     <div class="extra content">
         <a class="ui button yellow inverted" href="/friends/<%= friend.id %>/edit"><i class="edit icon"></i></a>
-        <button class="ui button red inverted"><i class="trash icon"></i></button>
+        <form method="POST" action="/friends/<%= friend.id %>?_method=DELETE">
+            <button class="ui button red inverted"><i class="trash icon"></i></button>
+        </form>
     </div>
 </div>
 
