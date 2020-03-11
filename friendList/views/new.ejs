@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<h1>New Route working</h1>
+<div class="ui container">
+
+    
+    <form class="ui form" action="/friends" method="POST">
+            <div class="field">
+                <label>First name</label>
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="field">
+                <label>Last name</label>
+                <input type="text" placeholder="Last Name">
+            </div>
+            <div class="field">
+                <label>Nickname</label>
+                <input type="text" placeholder="Nickname">
+            </div>
+            <div class="field">
+                <label>Birthday</label>
+                <input type="date" placeholder="Birthday">
+            </div>
+            <div class="field">
+                <label>Image</label>
+                <input type="text" placeholder="Image">
+            </div>
+        <button class="ui primary button">Submit</button>
+    </form>
+</div>
+    
+  <%- include('partials/footer') %>

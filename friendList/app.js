@@ -31,8 +31,8 @@ const Friend = new mongoose.model('Friend', friendSchema)
 //     firstName: 'Allyson',
 //     lastName: 'Drishinski',
 //     nickName: 'Ally',
-//     dob: 11/23/1988,
-//     image: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/14102608_10154021085284302_8890473236313838870_n.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=bmLA5wmpPHMAX_I2f0R&_nc_ht=scontent-lax3-1.xx&oh=c78dd5b9f9845bb2bf6f421487aa7527&oe=5EA66ABB',
+//     dob: '1988-11-23',
+//     image: 'https://images.unsplash.com/photo-1563178406-4cdc2923acbc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
 //     bestFriend: true
 // })
 
@@ -52,6 +52,10 @@ app.get('/friends', (req, res)=>{
     })
 })
 //CREATE ROUTE
+app.get('/friends/new', (req, res)=>{
+    res.render('new')
+})
+
 //NEW ROUTE
 //SHOW ROUTE
 //EDIT ROUTE

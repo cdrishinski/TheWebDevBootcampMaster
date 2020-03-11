@@ -1,11 +1,30 @@
 <%- include('partials/header') %>
 
-
-<h1>This is the index route!!!</h1>
-
 <% friends.forEach((friend)=>{ %>
-    <li><%= friend.firstName %></li>
-    <li><%= friend.lastName %></li>
+    <div class="ui card">
+        <div class="image">
+          <img src="<%= friend.image %>>">
+        </div>
+        <div class="content">
+          <a class="header"><%= friend.firstName %> "<%= friend.nickName %>" <%= friend.lastName %></a>
+          <div class="meta">
+            <span class="date">Birthday: <%= friend.dob.toDateString() %></span>
+          </div>
+          <div class="meta">
+            <span class="date">Entered: <%= friend.created.toDateString() %></span>
+          </div>
+          <div class="meta">
+            <span class="date">Best Friend Y/N: <% if(friend.bestFriend == true){ %>
+                Yes
+           <% } else( No) %></span>
+          </div>
+        </div>
+        <div class="extra content">
+            <button class="ui button primary inverted"><i class="address book icon"></i></button>
+            <button class="ui button yellow inverted"><i class="edit icon"></i></button>
+            <button class="ui button red inverted"><i class="trash icon"></i></button>
+        </div>
+      </div>
     <% }) %>
 
 <%- include('partials/footer') %>
