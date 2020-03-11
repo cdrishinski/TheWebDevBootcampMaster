@@ -1,30 +1,34 @@
 <%- include('partials/header') %>
 
-<% friends.forEach((friend)=>{ %>
+
+
+    <% friends.forEach((friend)=>{ %>
     <div class="ui card">
         <div class="image">
-          <img src="<%= friend.image %>>">
+            <img src="<%= friend.image %>>">
         </div>
         <div class="content">
-          <a class="header"><%= friend.firstName %> "<%= friend.nickName %>" <%= friend.lastName %></a>
-          <div class="meta">
-            <span class="date">Birthday: <%= friend.dob.toDateString() %></span>
-          </div>
-          <div class="meta">
-            <span class="date">Entered: <%= friend.created.toDateString() %></span>
-          </div>
-          <div class="meta">
-            <span class="date">Best Friend Y/N: <% if(friend.bestFriend == true){ %>
-                Yes
-           <% } else( No) %></span>
-          </div>
+            <a class="header"><%= friend.firstName %> "<%= friend.nickName %>" <%= friend.lastName %></a>
+            <div class="meta">
+                <span class="date">Birthday: <%= friend.dob.toDateString() %></span>
+            </div>
+            <div class="meta">
+                <span class="date">Entered: <%= friend.created.toDateString() %></span>
+            </div>
+            <div class="meta">
+                <a class="header">Best Friend Y/N: <% if(friend.bestFriend == true){ %>
+                    Yes
+                    <% } else{ %>
+                        No
+                    <% } %>
+                    </a>
+            </div>
         </div>
         <div class="extra content">
-            <button class="ui button primary inverted"><i class="address book icon"></i></button>
-            <button class="ui button yellow inverted"><i class="edit icon"></i></button>
-            <button class="ui button red inverted"><i class="trash icon"></i></button>
+            <a class="ui button primary inverted" href="/friends/<%= friend._id %>"><i class="address book icon"></i></a>
         </div>
-      </div>
+    </div>
     <% }) %>
+
 
 <%- include('partials/footer') %>

@@ -58,10 +58,30 @@ app.get('/friends/new', (req, res)=>{
 
 //CREATE ROUTE
 app.post('/friends', (req, res) =>{
-    console.log(req.body)
+    console.log(req.body.friend)
+    Friend.create(req.body.friend, (err, createdFriend)=>{
+        if(err){
+            console.log(err)
+            res.redirect('/friends/new')
+        }else{
+            res.redirect('/friends')
+        }
+    })
 })
 //SHOW ROUTE
+app.get('/friends/:id', (req, res)=>{
+    console.log('req',req.params.id)
+    Friend.findById(req.params.id, (err, foundFriend)=>{
+        if(err){
+            console.log(err)
+        } else{
+            res.render('show', {friend: foundFriend})
+
+        }
+    })
+})
 //EDIT ROUTE
+
 //UPDATE ROUTE
 //DELTE ROUTE
 
