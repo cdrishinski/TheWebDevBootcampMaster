@@ -70,7 +70,6 @@ app.post('/friends', (req, res) =>{
 })
 //SHOW ROUTE
 app.get('/friends/:id', (req, res)=>{
-    console.log('req',req.params.id)
     Friend.findById(req.params.id, (err, foundFriend)=>{
         if(err){
             console.log(err)
@@ -81,7 +80,9 @@ app.get('/friends/:id', (req, res)=>{
     })
 })
 //EDIT ROUTE
-
+app.get('/friends/:id/edit', (req, res)=>{
+    res.render('edit')
+})
 //UPDATE ROUTE
 //DELTE ROUTE
 
