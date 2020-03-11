@@ -3,28 +3,33 @@
 <h1>New Route working</h1>
 <div class="ui container">
 
-    
     <form class="ui form" action="/friends" method="POST">
             <div class="field">
                 <label>First name</label>
-                <input type="text" placeholder="First Name">
+                <input type="text" placeholder="First Name" name="friend[firstName]">
             </div>
             <div class="field">
                 <label>Last name</label>
-                <input type="text" placeholder="Last Name">
+                <input type="text" placeholder="Last Name" name="friend[lastName]">
             </div>
             <div class="field">
                 <label>Nickname</label>
-                <input type="text" placeholder="Nickname">
+                <input type="text" placeholder="Nickname" name="friend[nickName]">
             </div>
             <div class="field">
                 <label>Birthday</label>
-                <input type="date" placeholder="Birthday">
+                <input type="date" placeholder="Birthday" name="friend[dob]">
             </div>
             <div class="field">
                 <label>Image</label>
-                <input type="text" placeholder="Image">
+                <input type="text" placeholder="Image" name="friend[image]">
             </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <label>Bestfriend</label>
+                    <input type="checkbox" tabindex="0" name="friend[bestFriend]">
+                </div>
+              </div>
         <button class="ui primary button">Submit</button>
     </form>
 </div>

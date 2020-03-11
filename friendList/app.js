@@ -51,12 +51,15 @@ app.get('/friends', (req, res)=>{
         }
     })
 })
-//CREATE ROUTE
+//NEW ROUTE
 app.get('/friends/new', (req, res)=>{
     res.render('new')
 })
 
-//NEW ROUTE
+//CREATE ROUTE
+app.post('/friends', (req, res) =>{
+    console.log(req.body)
+})
 //SHOW ROUTE
 //EDIT ROUTE
 //UPDATE ROUTE
