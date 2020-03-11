@@ -81,9 +81,25 @@ app.get('/friends/:id', (req, res)=>{
 })
 //EDIT ROUTE
 app.get('/friends/:id/edit', (req, res)=>{
-    res.render('edit')
+    Friend.findById(req.params.id, (err, foundFriend)=>{
+        if(err){
+            console.log(err)
+        } else{
+            res.render('edit', {friend: foundFriend})
+
+        }
+    })
 })
 //UPDATE ROUTE
+app.put('/friends/:id', (req, res)=>{
+    Friend.findByIdAndUpdate(req.params.id, req.body.friend, (err, updatedFriend)=>{
+        if(err){
+            console.log(err)
+        } else {
+            res.redirect(`/friends/${req.params.id}`)
+        }
+    })
+})
 //DELTE ROUTE
 
 

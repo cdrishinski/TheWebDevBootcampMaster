@@ -1,3 +1,37 @@
 <%- include('partials/header') %>
-<h1>this is the damn edit page</h1>
-<%- include('partials/footer') %>
+
+<h1>Edit <%= friend.firstName %></h1>
+<div class="ui container">
+
+    <form class="ui form" action="/friends/<%= friend._id %>?_method=PUT" method="POST">
+            <div class="field">
+                <label>First name</label>
+                <input type="text" value="<%= friend.firstName %>" name="friend[firstName]">
+            </div>
+            <div class="field">
+                <label>Last name</label>
+                <input type="text" value="<%= friend.lastName %>" name="friend[lastName]">
+            </div>
+            <div class="field">
+                <label>Nickname</label>
+                <input type="text" value="<%= friend.nickName %>" name="friend[nickName]">
+            </div>
+            <!-- <div class="field">
+                <label>Birthday</label>
+                <input type="text" value="<%= friend.dob %>" name="friend[dob]">
+            </div> -->
+            <div class="field">
+                <label>Image</label>
+                <input type="text" value="<%= friend.image %>" name="friend[image]">
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <label>Bestfriend</label>
+                    <input type="checkbox" tabindex="0" name="friend[bestFriend]">
+                </div>
+              </div>
+        <button class="ui primary button">Submit</button>
+    </form>
+</div>
+    
+  <%- include('partials/footer') %>
