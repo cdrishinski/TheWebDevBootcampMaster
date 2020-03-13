@@ -1,0 +1,10 @@
+<h2>Edit Route for <%= name.firstName%></h2>
+
+<form action="/names/<%= name._id %>?_method=PUT" method="POST">
+    <input type="text" name="name[firstName]" id="" value="<%= name.firstName %>">
+    <input type="text" name="name[middleName]" id="" value="<%= name.middleName %>">
+    <input type="text" name="name[lastName]" id="" value="<%= name.lastName %>">
+    <input type="text" name="name[gender]" id="" value="<%= name.gender %>">
+    <button type="submit" value="submit">submit</button>
+</form>
+<button><a href="/names/<%= name._id %>">Cancel</a></button>

@@ -1,0 +1,10 @@
+<h1>Show Route</h1>
+
+
+    <a href="/names/<%= names._id %>"><%= names.firstName %> <%= names.middleName %> <%= names.lastName %> </a>
+    <p><%= names.gender %></p>
+    <a href="/names">Back</a>
+    <a href="/names/<%= names._id %>/edit">Edit</a>
+    <form action="/names/<%= names._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>

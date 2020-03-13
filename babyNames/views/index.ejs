@@ -1,0 +1,8 @@
+<h1>Index Page</h1>
+
+<a href="/names/new">Add New Name</a>
+<% names.forEach((name) =>{ %>
+    <li>
+        <a href="/names/<%= name._id %>"><%= name.firstName %> <%= name.middleName %> <%= name.lastName %> </a>
+    </li>
+<% }) %>
